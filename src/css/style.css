@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+.total {
+    width: 100%;
+    height: 100%;
+    background-color:  #FFFFFF;
+}
+
+.cima {
+    display: flex;
+}
+
+.imagem-forca {
+    width: 400px;
+    height: 466.67px;
+    margin-top: 59px;
+    margin-left: 38px;
+}
+
+.direita{
+  
+}
+
+.palavra{
+   
+  margin-top: 282px;
+  margin-left: 61px;
+  width: 323px;
+height: 68px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 50px;
+line-height: 68px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+
+}
+
+.escolher-palavra {
+    width: 200px;
+    height: 60px;
+    background-color: #27AE60;
+    border-radius: 8px;
+    margin-top: 89px;
+    margin-left: 334px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.parte-de-cima {
+    margin-top: 71px;
+    display: flex;
+    justify-content: center;
+}
+
+.parte-de-baixo {
+    margin-top: 11px;
+    display: flex;
+    justify-content: center;
+}
+
+.letras {
+    width: 40px;
+    height: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #798A9F;
+    background: #9FAAB5;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+    margin-left: 11px;
+}
