@@ -1,11 +1,21 @@
-export default function letras(){
+
+import React, { useState } from "react";
+
+export default function Letras(props){
    
+    const [verB, setverB] = useState('letras');
+
     
-    const alfabetoBaixo = ["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "z"];
+
+    function escolherLetra() {
+    alert('Passaei aqui letras abaixo');
+    setverB('abilitado');
+    };
     return(
-    alfabetoBaixo.map(alfabetoBaixo => (
-        <div disabled class="letras">{alfabetoBaixo}</div>
-    ))
+    
+ <div disabled onClick={escolherLetra} class={verB}>{props.alfabetoBaixo}</div>
+    
 );
+
 
 }

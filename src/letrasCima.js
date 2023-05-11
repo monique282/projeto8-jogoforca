@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 
-export default function Letras(){
+export default function Letras(props){
 
-let [abilitar, setAbilitar]= useState('letras');
-   
-    const alfabetoCima = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+
+const [ver, setver] = useState('letras')
+
+    
+
+    function escolherLetra() {
+    alert('Passaei aqui letras');
+    setver('abilitado');
+    };
+
+    
+    
+
     return(
-     alfabetoCima.map(alfabetoCima => (
-        <div disabled  class={abilitar}>{alfabetoCima}</div>
-    ))
-);
+        <div disabled onClick={escolherLetra} class={ver}>{props.alfabetoCima}</div>
+    );
 
 }
