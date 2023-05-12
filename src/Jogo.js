@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import Palavras from "./Palavras";
+import Palavras from "./palavras";
 
 export default function Jogo() {
 
