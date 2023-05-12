@@ -23,7 +23,10 @@ button:hover {
     margin-left: 38px;
 }
 
-.direita {}
+.letrastotais {
+    display: flex;
+    justify-content: center;
+}
 
 .palavra {
 
@@ -61,8 +64,9 @@ button:hover {
 }
 
 .parte-de-cima {
-    margin-top: 71px;
+    width: 700px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -88,7 +92,9 @@ button:hover {
     border: 1px solid #7AA7C7;
     border-radius: 3px;
     margin-left: 11px;
+    margin-bottom: 11px;
     background-color: #E1ECF4;
+
 }
 
 .letrasDesabilitadas {
@@ -108,14 +114,15 @@ button:hover {
     border: 1px solid #7AA7C7;
     border-radius: 3px;
     margin-left: 11px;
+    margin-bottom: 11px;
 }
 
 
 
-.NaoClica{
+.errou{
     color: red;
 }
 
-.clica{
-    color: yellow;
+.acertou{
+    color: #27AE60
 }

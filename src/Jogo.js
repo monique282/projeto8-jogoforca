@@ -1,76 +1,117 @@
 
 import React, { useState } from "react";
-//import LetrasAcima from "./letrasCima";
-import LetrasBaixo from "./letrasBaixo";
 import Palavras from "./Palavras";
 
 export default function Jogo() {
 
-    const alfabetoCima = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
-    const alfabetoBaixo = ["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    const alfabetoCima = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
     const [botoesAtivos, setBotoesAtivos] = useState(false); // serve para abilitar o botão no assim que clicado em escolher palavra
     const [abilitar, setAbilitar] = useState('letrasDesabilitadas'); // serve para colocar a cor do boão de abilitado 
-    const [desabilitar, setDesabilitar] = useState(false); // serve para desabilitar o botão assim que clicado
-    const [ver, setver] = useState(' '); // serve pra colocar a cor de desabilitado
-    const [quantidadeDeLetras, setQuantidadeDeLetras] = useState(0);
+    const [erro, setErro] = useState(0); // serve pra contar a quantidade de erro
+    const [acertou, setAcertou] = useState('');
+    const [errou, setErrou] = useState('');
     const [palavraSorteada, setPalavraSorteada] = useState('');
+    const [letrasCorretas, setLetrasCorretas] = useState([]);
+    const [palavraExibida, setPalavraExibida] = useState([]);
+    const [reiniciar, setReiniciar] = useState(0)
+    const [botoes, setBotoes] = useState(
+        alfabetoCima.map((letra) => ({ letra: letra, habilitado: true }))
+    );
+
+
 
     function escolherLetra(letra) {
         let palavra = palavraSorteada.toUpperCase();
-        let letraClicada = (alfabetoCima);
-        console.log(letra);
-        if (abilitar === 'abilitado') {
-            setver(' letrasDesabilitadas');
-            setDesabilitar(true);
 
-        };
-        if (palavra.includes(letraClicada)) {
-            console.log('A letra clicada está na palavra!');
+        setBotoes((botoes) =>
+            botoes.map((botao) =>
+                botao.letra === letra ? { ...botao, habilitado: false } : botao
+            )
+        );
+
+        if (palavra.includes(letra)) {
+            // fazer trocar o anderalaine
+            setLetrasCorretas([...letrasCorretas, letra]);
+            const novaPalavraExibida = palavraExibida.map((letraExibida, index) =>
+                palavra[index].toUpperCase() === letra ? letra : letraExibida
+            );
+            setPalavraExibida(novaPalavraExibida);
+            let paralavraVerificada = novaPalavraExibida.join("");
+            if (paralavraVerificada === palavra) { // verificar se a pessoal acertou
+                setBotoesAtivos(false);
+                setAbilitar(' letrasDesabilitadas');
+                setAcertou('acertou');
+            }
         } else {
-            console.log('A letra clicada não está na palavra.');
-        }
+            if (erro < 5) {
+                setErro(erro + 1);
+
+            } else {
+                setErro(erro + 1);
+                setBotoesAtivos(false);
+                setAbilitar(' letrasDesabilitadas')
+                setErrou('errou');
+                setPalavraExibida(Array(palavraSorteada.toUpperCase()));
+            }}
     };
 
+    function Reiniciar() {
+
+        setErro(0);
+        setAcertou('');
+        setErrou('');
+        setPalavraSorteada('');
+        setLetrasCorretas([]);
+        setPalavraExibida([]);
+        setBotoes(
+            alfabetoCima.map((letra) => ({ letra: letra, habilitado: true }))
+        );
+        setBotoesAtivos(true);
+        setAbilitar(' abilitado');
+
+    };
 
     function escolherPalavra() {
 
-        if (palavraSorteada === '') {
-            const palavrasEmbaralhadas = [...Palavras];
+        Reiniciar();
 
-            palavrasEmbaralhadas.sort(() => Math.random() - 0.5);
+        const palavrasEmbaralhadas = [...Palavras];
+        palavrasEmbaralhadas.sort(() => Math.random() - 0.5);
+        let palavraSorteada = palavrasEmbaralhadas[0];
+        console.log(palavraSorteada);
+        setPalavraSorteada(palavraSorteada)
+        setReiniciar(reiniciar);
+        setBotoesAtivos(true);
+        setAbilitar('abilitado');
+        setPalavraExibida(Array(palavraSorteada.length).fill('_'));
 
-            let palavraSorteada = palavrasEmbaralhadas[0];
-            console.log(palavraSorteada);
-            setPalavraSorteada(palavraSorteada)
-            setQuantidadeDeLetras(palavraSorteada.length);
-            setBotoesAtivos(true);
-            setAbilitar('abilitado');
-            console.log(palavraSorteada);
-        }
     };
     return (
         <> <div class="cima">
             <div class="forca">
-                <img class="imagem-forca" src="./assets/forca0.png" alt="" />
+                <img class="imagem-forca" src={`./assets/forca${erro}.png`} alt="" data-test="game-image"/>
             </div>
             <div class="direita" >
-                <button onClick={escolherPalavra} class="escolher-palavra">Escolher palavra</button>
-                <div class="palavra">
-                    {Array.from({ length: quantidadeDeLetras }, () => '_').join(' ')}
+                <button onClick={escolherPalavra} class="escolher-palavra" data-test="choose-word">Escolher palavra</button>
+                <div class={`palavra ${errou} ${acertou}`} data-test="word" >
+                    {palavraExibida.join(' ')}
                 </div>
             </div>
         </div>
             <div class="letrastotais">
                 <div class="parte-de-cima">
-                    {alfabetoCima.map((letra, index) => {
-                        return (<button disabled={!botoesAtivos || desabilitar} onClick={() => escolherLetra(letra)} class={abilitar + ver} key={index}> {letra} </button>);
-                    })}
-                </div>
-                <div class="parte-de-baixo">
-                    {alfabetoBaixo.map(alfabetoBaixo => {
-                        return (<LetrasBaixo alfabetoBaixo={alfabetoBaixo} botoesAtivos={botoesAtivos} abilitar={abilitar} palavraSorteada={palavraSorteada}  />)
-                    })}
+                    {botoes.map((botao, index) => (
+                        <button
+                            disabled={!botoesAtivos || !botao.habilitado}
+                            onClick={() => escolherLetra(botao.letra)}
+                            className={abilitar + (botao.habilitado ? '' : ' letrasDesabilitadas')}
+                            key={index}
+                            data-test="letter"
+                        >
+                            {botao.letra}
+                        </button>
+                    ))}
                 </div>
             </div>
 
