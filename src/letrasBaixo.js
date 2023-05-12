@@ -20,7 +20,6 @@ export default function Letras(props) {
         if (palavra.includes(letraClicada)) {
             console.log('A letra clicada está na palavra!');
         } else {
-            props.erros++;
             console.log(props.erros);
             console.log('A letra clicada não está na palavra.');
         }

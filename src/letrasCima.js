@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
 export default function Letras(props) {
 
-    const [ver, setver] = useState(' ');
-    const [desabilitar, setDesabilitar] = useState(false);
+   /*  const [ver, setver] = useState(' ');
+   // const [desabilitar, setDesabilitar] = useState(false);
     let erro = 0;
 
     function escolherLetra() {
@@ -25,13 +25,12 @@ export default function Letras(props) {
             console.log('A letra clicada não está na palavra.');
         }
 
-    };
+    }; */
 
 
 
 
-    return (
-        <button disabled={!props.botoesAtivos || desabilitar} onClick={escolherLetra} class={props.abilitar + ver}> {props.alfabetoCima} </button>
-    );
+   
+     //   <button disabled={!props.botoesAtivos || desabilitar} onClick={escolherLetra} class={props.abilitar + ver}> {props.alfabetoCima} </button>
+    }
 
-}
