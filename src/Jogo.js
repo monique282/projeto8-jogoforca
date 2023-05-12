@@ -34,9 +34,10 @@ export default function Jogo() {
             // fazer trocar o anderalaine
             setLetrasCorretas([...letrasCorretas, letra]);
             const novaPalavraExibida = palavraExibida.map((letraExibida, index) =>
-                palavra[index].toUpperCase() === letra ? letra : letraExibida
+                palavra[index] === letra ? letra : letraExibida
             );
             setPalavraExibida(novaPalavraExibida);
+            console.log(novaPalavraExibida);
             let paralavraVerificada = novaPalavraExibida.join("");
             if (paralavraVerificada === palavra) { // verificar se a pessoal acertou
                 setBotoesAtivos(false);
