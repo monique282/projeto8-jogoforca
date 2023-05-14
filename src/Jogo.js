@@ -32,14 +32,19 @@ export default function Jogo() {
 
         if (palavra.includes(letra)) {
             // fazer trocar o anderalaine
+            let letraM = letra.toLowerCase();
+            console.log(letraM);
             setLetrasCorretas([...letrasCorretas, letra]);
+            
             const novaPalavraExibida = palavraExibida.map((letraExibida, index) =>
-                palavra[index] === letra ? letra : letraExibida
+                palavra[index] === letra ? letraM : letraExibida
             );
             setPalavraExibida(novaPalavraExibida);
-            console.log(novaPalavraExibida);
+            console.log(palavraExibida);
+        //   let novaPalavra = (novaPalavraExibida.toUpperCase());
+           // console.log(novaPalavra);
             let paralavraVerificada = novaPalavraExibida.join("");
-            if (paralavraVerificada === palavra) { // verificar se a pessoal acertou
+            if (paralavraVerificada.toUpperCase() === palavra) { // verificar se a pessoal acertou
                 setBotoesAtivos(false);
                 setAbilitar(' letrasDesabilitadas');
                 setAcertou('acertou');
