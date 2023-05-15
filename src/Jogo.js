@@ -33,7 +33,6 @@ export default function Jogo() {
         if (palavra.includes(letra)) {
             // fazer trocar o anderalaine
             let letraM = letra.toLowerCase();
-            console.log(letraM);
             setLetrasCorretas([...letrasCorretas, letra]);
             
             const novaPalavraExibida = palavraExibida.map((letraExibida, index) =>
@@ -41,8 +40,6 @@ export default function Jogo() {
             );
             setPalavraExibida(novaPalavraExibida);
             console.log(palavraExibida);
-        //   let novaPalavra = (novaPalavraExibida.toUpperCase());
-           // console.log(novaPalavra);
             let paralavraVerificada = novaPalavraExibida.join("");
             if (paralavraVerificada.toUpperCase() === palavra) { // verificar se a pessoal acertou
                 setBotoesAtivos(false);
@@ -58,7 +55,7 @@ export default function Jogo() {
                 setBotoesAtivos(false);
                 setAbilitar(' letrasDesabilitadas')
                 setErrou('errou');
-                setPalavraExibida(Array(palavraSorteada.toUpperCase()));
+                setPalavraExibida(Array(palavraSorteada));
             }}
     };
 
@@ -85,7 +82,6 @@ export default function Jogo() {
         const palavrasEmbaralhadas = [...Palavras];
         palavrasEmbaralhadas.sort(() => Math.random() - 0.5);
         let palavraSorteada = palavrasEmbaralhadas[0];
-        console.log(palavraSorteada);
         setPalavraSorteada(palavraSorteada)
         setReiniciar(reiniciar);
         setBotoesAtivos(true);
