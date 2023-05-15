@@ -39,7 +39,6 @@ export default function Jogo() {
                 palavra[index] === letra ? letraM : letraExibida
             );
             setPalavraExibida(novaPalavraExibida);
-            console.log(palavraExibida);
             let paralavraVerificada = novaPalavraExibida.join("");
             if (paralavraVerificada.toUpperCase() === palavra) { // verificar se a pessoal acertou
                 setBotoesAtivos(false);
