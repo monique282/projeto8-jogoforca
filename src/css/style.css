@@ -154,21 +154,25 @@ button:hover {
     .imagem-forca {
         margin-top: 20px;
         margin-bottom: 20px;
-        
+        margin-left: 0;
         width: 300px;
         height: auto;
+    }
+
+    .escolher-palavra{
+        margin-top: 0;
     }
 
     .palavra {
         margin-top: 20px;
         margin-bottom: 20px;
-       
         font-size: 30px;
         line-height: 40px;
     }
 
     .parte-de-cima {
         width: 100%;
+        margin-top: 0;
     }
 }
 
